@@ -5,6 +5,7 @@
 // DOM Elements
 const standingsContainer = document.getElementById('standings');
 const overallStandingsContainer = document.getElementById('overallStandings');
+const topPerformersContainer = document.getElementById('topPerformers');
 const rostersContainer = document.getElementById('rosters');
 const lineupsContainer = document.getElementById('lineups');
 const currentRoundName = document.getElementById('currentRoundName');
@@ -249,6 +250,107 @@ function renderOverallStandings() {
                     <div class="team-record">${roundBreakdown}</div>
                 </div>
                 <div class="team-score">${player.score.toFixed(1)}</div>
+            </div>
+        `;
+    }).join('');
+}
+
+// Calculate total fantasy points for an NFL player across all rounds
+function calculateNFLPlayerTotalScore(playerName) {
+    let total = 0;
+    for (const round of Object.keys(PLAYOFF_ROUNDS)) {
+        const roundStats = playerStats[round] || {};
+        const stats = roundStats[playerName];
+        if (stats) {
+            let points = 0;
+            points += (stats.passingYards || 0) * SCORING.passingYards;
+            points += (stats.passingTD || 0) * SCORING.passingTD;
+            points += (stats.interceptions || 0) * SCORING.interception;
+            points += (stats.rushingYards || 0) * SCORING.rushingYards;
+            points += (stats.rushingTD || 0) * SCORING.rushingTD;
+            points += (stats.receptions || 0) * SCORING.reception;
+            points += (stats.receivingYards || 0) * SCORING.receivingYards;
+            points += (stats.receivingTD || 0) * SCORING.receivingTD;
+            points += (stats.fumblesLost || 0) * SCORING.fumbleLost;
+            points += (stats.twoPointConversions || 0) * SCORING.twoPointConversion;
+            total += points;
+        }
+    }
+    return Math.round(total * 100) / 100;
+}
+
+// Get top NFL performers across all rounds
+function getTopPerformers(limit = 10) {
+    const allPlayers = getAllNFLPlayers();
+    const performers = allPlayers.map(player => {
+        const totalScore = calculateNFLPlayerTotalScore(player.name);
+        // Get round-by-round scores
+        const roundScores = {};
+        for (const round of Object.keys(PLAYOFF_ROUNDS)) {
+            const roundStats = playerStats[round] || {};
+            const stats = roundStats[player.name];
+            if (stats) {
+                let points = 0;
+                points += (stats.passingYards || 0) * SCORING.passingYards;
+                points += (stats.passingTD || 0) * SCORING.passingTD;
+                points += (stats.interceptions || 0) * SCORING.interception;
+                points += (stats.rushingYards || 0) * SCORING.rushingYards;
+                points += (stats.rushingTD || 0) * SCORING.rushingTD;
+                points += (stats.receptions || 0) * SCORING.reception;
+                points += (stats.receivingYards || 0) * SCORING.receivingYards;
+                points += (stats.receivingTD || 0) * SCORING.receivingTD;
+                points += (stats.fumblesLost || 0) * SCORING.fumbleLost;
+                points += (stats.twoPointConversions || 0) * SCORING.twoPointConversion;
+                roundScores[round] = Math.round(points * 100) / 100;
+            } else {
+                roundScores[round] = 0;
+            }
+        }
+        return {
+            ...player,
+            totalScore,
+            roundScores
+        };
+    });
+
+    return performers
+        .filter(p => p.totalScore > 0)
+        .sort((a, b) => b.totalScore - a.totalScore)
+        .slice(0, limit);
+}
+
+// Find which fantasy team owns a player
+function findOwner(playerName) {
+    for (const [teamId, roster] of Object.entries(DRAFT_PICKS)) {
+        if (roster.find(p => p.name === playerName)) {
+            const owner = FANTASY_PLAYERS.find(fp => fp.id === parseInt(teamId));
+            return owner ? owner.name : 'Unknown';
+        }
+    }
+    return 'Unknown';
+}
+
+// Render top performers section
+function renderTopPerformers() {
+    const topPerformers = getTopPerformers(10);
+
+    topPerformersContainer.innerHTML = topPerformers.map((player, index) => {
+        const owner = findOwner(player.name);
+        const roundBreakdown = Object.keys(PLAYOFF_ROUNDS)
+            .filter(round => player.roundScores[round] > 0)
+            .map(round => `${PLAYOFF_ROUNDS[round].name.substring(0, 3)}: ${player.roundScores[round].toFixed(1)}`)
+            .join(' | ');
+
+        return `
+            <div class="performer-card rank-${index + 1}">
+                <div class="performer-rank">${index + 1}</div>
+                <span class="player-position ${player.position.toLowerCase()}">${player.position}</span>
+                <div class="performer-info">
+                    <div class="performer-name">${player.name}</div>
+                    <div class="performer-details">${NFL_TEAMS[player.team]?.name || player.team} · Owner: ${owner}</div>
+                    <div class="performer-breakdown">${roundBreakdown}</div>
+                </div>
+                <div class="performer-score">${player.totalScore.toFixed(1)}</div>
             </div>
         `;
     }).join('');
@@ -627,6 +729,7 @@ function closeModal() {
 // Render everything
 function renderAll() {
     renderOverallStandings();
+    renderTopPerformers();
     renderStandings();
     renderLineups();
     renderRosters();
