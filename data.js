@@ -273,7 +273,7 @@ let playerStats = {
         // Rams 34, Panthers 31 (additional)
         "Davante Adams": { receptions: 5, receivingYards: 72 },
         // Patriots 16, Chargers 3
-        "Drake Maye": { passingYards: 268, passingTD: 1, rushingYards: 66, fumblesLost: 1 },
+        "Drake Maye": { passingYards: 268, passingTD: 1, interceptions: 1, rushingYards: 66, fumblesLost: 1 },
         "Rhamondre Stevenson": { rushingYards: 53, receptions: 3, receivingYards: 75 },
         "Stefon Diggs": { receptions: 2, receivingYards: 16 },
         "Hunter Henry": { receptions: 3, receivingYards: 64, receivingTD: 1 },
