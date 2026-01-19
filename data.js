@@ -310,6 +310,69 @@ let playerStats = {
     }
 };
 
+// Default Starting Lineups (pre-populated based on draft order and eligibility)
+const DEFAULT_LINEUPS = {
+    wildcard: {
+        // Stoler
+        1: { qb1: "CJ Stroud", rb1: "Saquon Barkley", wr1: "Puka Nacua", wr2: "Nico Collins", flex1: "Josh Jacobs", flex2: "Woody Marks" },
+        // Kilborne
+        2: { qb1: "Jalen Hurts", rb1: "Kyren Williams", wr1: "AJ Brown", wr2: "Devonta Smith", flex1: "TreVeyon Henderson", flex2: "Hunter Henry" },
+        // Greer
+        3: { qb1: "Trevor Lawrence", rb1: "Travis Etienne", wr1: "Colston Loveland", wr2: "Jakobi Meyers", flex1: "Caleb Williams", flex2: "D'Andre Swift" },
+        // Hirschl
+        4: { qb1: "Matthew Stafford", rb1: "Kenneth Gainwell", wr1: "Davante Adams", wr2: "Tyler Higbee", flex1: "Justin Herbert", flex2: "Aaron Rodgers" },
+        // Rob
+        5: { qb1: "Drake Maye", rb1: "Rhamondre Stevenson", wr1: "Stefon Diggs", wr2: "Christian Watson", flex1: "Jordan Love", flex2: "Blake Corum" },
+        // Sunny
+        6: { qb1: "Josh Allen", rb1: "James Cook", wr1: "George Kittle", wr2: "Rome Odunze", flex1: "Christian McCaffrey", flex2: "Brock Purdy" }
+    },
+    divisional: {
+        // Stoler
+        1: { qb1: "CJ Stroud", rb1: "Woody Marks", wr1: "Puka Nacua", wr2: "Nico Collins", flex1: "Luther Burden", flex2: null },
+        // Kilborne
+        2: { qb1: null, rb1: "Kyren Williams", wr1: "Courtland Sutton", wr2: "Hunter Henry", flex1: "TreVeyon Henderson", flex2: "Troy Franklin" },
+        // Greer
+        3: { qb1: "Caleb Williams", rb1: "Kenneth Walker", wr1: "Jaxon Smith-Njigba", wr2: "Colston Loveland", flex1: "D'Andre Swift", flex2: null },
+        // Hirschl
+        4: { qb1: "Matthew Stafford", rb1: "RJ Harvey", wr1: "Davante Adams", wr2: "Tyler Higbee", flex1: "Bo Nix", flex2: null },
+        // Rob
+        5: { qb1: "Drake Maye", rb1: "Rhamondre Stevenson", wr1: "Stefon Diggs", wr2: "AJ Barner", flex1: "Sam Darnold", flex2: "Blake Corum" },
+        // Sunny
+        6: { qb1: "Josh Allen", rb1: "James Cook", wr1: "George Kittle", wr2: "Rome Odunze", flex1: "Christian McCaffrey", flex2: "Brock Purdy" }
+    },
+    championship: {
+        // Stoler
+        1: { rb1: "Woody Marks", wr1: "Puka Nacua", flex1: "CJ Stroud", flex2: "Nico Collins" },
+        // Kilborne
+        2: { rb1: "Kyren Williams", wr1: "Courtland Sutton", flex1: "TreVeyon Henderson", flex2: "Hunter Henry" },
+        // Greer
+        3: { rb1: "Kenneth Walker", wr1: "Jaxon Smith-Njigba", flex1: "Caleb Williams", flex2: "D'Andre Swift" },
+        // Hirschl
+        4: { rb1: "RJ Harvey", wr1: "Davante Adams", flex1: "Matthew Stafford", flex2: "Bo Nix" },
+        // Rob
+        5: { rb1: "Rhamondre Stevenson", wr1: "Stefon Diggs", flex1: "Drake Maye", flex2: "Sam Darnold" },
+        // Sunny
+        6: { rb1: "Zach Charbonnet", wr1: "Rome Odunze", flex1: null, flex2: null }
+    },
+    superbowl: {
+        // Stoler
+        1: { flex1: "Puka Nacua", flex2: "CJ Stroud", flex3: "Nico Collins" },
+        // Kilborne
+        2: { flex1: "Kyren Williams", flex2: "Courtland Sutton", flex3: "TreVeyon Henderson" },
+        // Greer
+        3: { flex1: "Jaxon Smith-Njigba", flex2: "Caleb Williams", flex3: "Kenneth Walker" },
+        // Hirschl
+        4: { flex1: "Matthew Stafford", flex2: "Davante Adams", flex3: "Bo Nix" },
+        // Rob
+        5: { flex1: "Drake Maye", flex2: "Sam Darnold", flex3: "Rhamondre Stevenson" },
+        // Sunny
+        6: { flex1: "Rome Odunze", flex2: "Zach Charbonnet", flex3: null }
+    }
+};
+
+// Initialize startingLineups with defaults
+let startingLineups = JSON.parse(JSON.stringify(DEFAULT_LINEUPS));
+
 // Load saved data from localStorage if available
 function loadSavedData() {
     const savedStats = localStorage.getItem('fantasyPlayoffStats');
