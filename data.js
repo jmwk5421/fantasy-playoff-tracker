@@ -48,9 +48,9 @@ const TEAMS_BY_ROUND = {
     // Divisional: 8 teams remaining (1 & 2 seeds + wild card winners)
     divisional: ["DEN", "NE", "HOU", "BUF", "SEA", "CHI", "LAR", "SF"],
     // Championship: Update after divisional round
-    championship: ["DEN", "NE", "HOU", "SEA", "LAR", "CHI"],  // All teams not yet eliminated
+    championship: ["DEN", "NE", "SEA", "LAR"],  // Broncos vs Patriots (AFC), Seahawks vs Rams (NFC)
     // Super Bowl: Update after championship round
-    superbowl: ["DEN", "NE", "HOU", "SEA", "LAR", "CHI"]  // All teams not yet eliminated
+    superbowl: ["DEN", "NE", "SEA", "LAR"]  // All teams not yet eliminated
 };
 
 // Teams on bye each round (1 seeds in wild card)
@@ -304,8 +304,19 @@ let playerStats = {
         "Rhamondre Stevenson": { rushingYards: 70, receptions: 4, receivingYards: 11 },
         "TreVeyon Henderson": { rushingYards: 25, receptions: 1, receivingYards: -2 },
         "Stefon Diggs": { receptions: 4, receivingYards: 40, receivingTD: 1 },
-        "Hunter Henry": { receptions: 1, receivingYards: 5 }
-        // Rams vs Bears - not yet played
+        "Hunter Henry": { receptions: 1, receivingYards: 5 },
+        // Rams 20, Bears 17 (OT)
+        "Matthew Stafford": { passingYards: 258, rushingYards: -1 },
+        "Kyren Williams": { rushingYards: 87, rushingTD: 2, receptions: 4, receivingYards: 30 },
+        "Puka Nacua": { receptions: 5, receivingYards: 56, rushingYards: 6 },
+        "Davante Adams": { receptions: 2, receivingYards: 24 },
+        "Tyler Higbee": { receptions: 1, receivingYards: 27 },
+        "Blake Corum": { rushingYards: 19 },
+        "Caleb Williams": { passingYards: 257, passingTD: 2, interceptions: 3, rushingYards: 40 },
+        "D'Andre Swift": { rushingYards: 76 },
+        "Luther Burden": { receptions: 3, receivingYards: 24 },
+        "Rome Odunze": { receptions: 2, receivingYards: 44 },
+        "Colston Loveland": { receptions: 4, receivingYards: 56 }
     }
 };
 
