@@ -225,9 +225,8 @@ const PLAYOFF_ROUNDS = {
 // Current active round
 let currentRound = "wildcard";
 
-// Starting lineups storage
+// Starting lineups storage - initialized below with DEFAULT_LINEUPS
 // Format: { visibleRound: { fantasyPlayerId: { slotId: "NFL Player Name", ... } } }
-let startingLineups = {};
 
 // Player stats storage - will be populated as you enter stats
 // Format: { round: { "Player Name": { passingYards: 0, ... } } }
