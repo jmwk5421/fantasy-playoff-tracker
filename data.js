@@ -364,7 +364,14 @@ function loadSavedData() {
         }
     }
     if (savedLineups) {
-        startingLineups = JSON.parse(savedLineups);
+        const parsed = JSON.parse(savedLineups);
+        // Merge saved lineups with defaults (saved take priority)
+        for (const round in parsed) {
+            if (!startingLineups[round]) {
+                startingLineups[round] = {};
+            }
+            Object.assign(startingLineups[round], parsed[round]);
+        }
     }
     if (savedRound) {
         currentRound = savedRound;
