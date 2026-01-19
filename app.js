@@ -560,7 +560,7 @@ function openLineupModal(fantasyPlayerId) {
         return `
             <div class="lineup-slot-select">
                 <label>${slot.label} ${slot.positions.length > 1 ? '(' + slot.positions.join('/') + ')' : ''}</label>
-                <select data-slot="${slot.id}">
+                <select data-slot="${slot.id}" data-positions="${slot.positions.join(',')}">
                     <option value="">-- Empty --</option>
                     ${eligiblePlayers.map(player => `
                         <option value="${player.name}" ${player.name === currentSelection ? 'selected' : ''}>
@@ -572,7 +572,53 @@ function openLineupModal(fantasyPlayerId) {
         `;
     }).join('');
 
+    // Add event listeners to update dropdowns when selection changes
+    const selects = lineupSlots.querySelectorAll('select[data-slot]');
+    selects.forEach(select => {
+        select.addEventListener('change', () => updateLineupDropdowns(fantasyPlayerId));
+    });
+
+    // Initial update to filter out already-selected players
+    updateLineupDropdowns(fantasyPlayerId);
+
     lineupModal.classList.add('active');
+}
+
+// Update lineup dropdowns to prevent duplicate player selection
+function updateLineupDropdowns(fantasyPlayerId) {
+    const roster = DRAFT_PICKS[fantasyPlayerId];
+    const selects = lineupSlots.querySelectorAll('select[data-slot]');
+
+    // Get all currently selected players
+    const selectedPlayers = new Set();
+    selects.forEach(select => {
+        if (select.value) {
+            selectedPlayers.add(select.value);
+        }
+    });
+
+    // Update each dropdown to disable already-selected players (except in current slot)
+    selects.forEach(select => {
+        const currentValue = select.value;
+        const positions = select.dataset.positions.split(',');
+
+        // Get eligible players for this slot
+        const eligiblePlayers = roster.filter(p =>
+            positions.includes(p.position) && isPlayerActiveInRound(p.team)
+        );
+
+        // Rebuild options
+        select.innerHTML = '<option value="">-- Empty --</option>' +
+            eligiblePlayers.map(player => {
+                const isSelected = player.name === currentValue;
+                const isUsedElsewhere = selectedPlayers.has(player.name) && !isSelected;
+                return `
+                    <option value="${player.name}" ${isSelected ? 'selected' : ''} ${isUsedElsewhere ? 'disabled' : ''}>
+                        ${player.name} (${player.position} - ${player.team})${isUsedElsewhere ? ' - Already Selected' : ''}
+                    </option>
+                `;
+            }).join('');
+    });
 }
 
 // Save lineup
