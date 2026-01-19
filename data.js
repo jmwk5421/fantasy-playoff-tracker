@@ -257,7 +257,7 @@ let playerStats = {
         "Parker Washington": { receptions: 7, receivingYards: 107, receivingTD: 1 },
         "Jakobi Meyers": { receptions: 1, receivingYards: 12 },
         // 49ers 23, Eagles 19
-        "Brock Purdy": { passingYards: 262, passingTD: 2, interceptions: 2 },
+        "Brock Purdy": { passingYards: 262, passingTD: 2, interceptions: 2, rushingYards: 24 },
         "Saquon Barkley": { rushingYards: 106, receptions: 3, receivingYards: 25 },
         "Jalen Hurts": { passingYards: 168, passingTD: 1, rushingYards: 14 },
         "AJ Brown": { receptions: 3, receivingYards: 25 },
