@@ -263,7 +263,7 @@ let playerStats = {
         "AJ Brown": { receptions: 3, receivingYards: 25 },
         "Devonta Smith": { receptions: 8, receivingYards: 70 },
         "Christian McCaffrey": { rushingYards: 48, receptions: 6, receivingYards: 66, receivingTD: 2 },
-        "George Kittle": { receptions: 4, receivingYards: 45 },
+        "George Kittle": { receptions: 1, receivingYards: 6 },
         // Texans 30, Steelers 6
         "CJ Stroud": { passingYards: 250, passingTD: 1, interceptions: 1 },
         "Woody Marks": { rushingYards: 112, rushingTD: 1 },
