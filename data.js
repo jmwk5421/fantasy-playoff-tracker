@@ -340,34 +340,8 @@ const DEFAULT_LINEUPS = {
         // Sunny
         6: { qb1: "Josh Allen", rb1: "James Cook", wr1: "George Kittle", wr2: "Rome Odunze", flex1: "Christian McCaffrey", flex2: "Brock Purdy" }
     },
-    championship: {
-        // Stoler
-        1: { rb1: "Woody Marks", wr1: "Puka Nacua", flex1: "CJ Stroud", flex2: "Nico Collins" },
-        // Kilborne
-        2: { rb1: "Kyren Williams", wr1: "Courtland Sutton", flex1: "TreVeyon Henderson", flex2: "Hunter Henry" },
-        // Greer
-        3: { rb1: "Kenneth Walker", wr1: "Jaxon Smith-Njigba", flex1: "Caleb Williams", flex2: "D'Andre Swift" },
-        // Hirschl
-        4: { rb1: "RJ Harvey", wr1: "Davante Adams", flex1: "Matthew Stafford", flex2: "Bo Nix" },
-        // Rob
-        5: { rb1: "Rhamondre Stevenson", wr1: "Stefon Diggs", flex1: "Drake Maye", flex2: "Sam Darnold" },
-        // Sunny
-        6: { rb1: "Zach Charbonnet", wr1: "Rome Odunze", flex1: null, flex2: null }
-    },
-    superbowl: {
-        // Stoler
-        1: { flex1: "Puka Nacua", flex2: "CJ Stroud", flex3: "Nico Collins" },
-        // Kilborne
-        2: { flex1: "Kyren Williams", flex2: "Courtland Sutton", flex3: "TreVeyon Henderson" },
-        // Greer
-        3: { flex1: "Jaxon Smith-Njigba", flex2: "Caleb Williams", flex3: "Kenneth Walker" },
-        // Hirschl
-        4: { flex1: "Matthew Stafford", flex2: "Davante Adams", flex3: "Bo Nix" },
-        // Rob
-        5: { flex1: "Drake Maye", flex2: "Sam Darnold", flex3: "Rhamondre Stevenson" },
-        // Sunny
-        6: { flex1: "Rome Odunze", flex2: "Zach Charbonnet", flex3: null }
-    }
+    championship: {},
+    superbowl: {}
 };
 
 // Initialize startingLineups with defaults
