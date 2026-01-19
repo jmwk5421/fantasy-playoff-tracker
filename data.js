@@ -245,7 +245,7 @@ let playerStats = {
         "Luther Burden": { receptions: 3, receivingYards: 42 },
         "Rome Odunze": { receptions: 2, receivingYards: 44 },
         "Colston Loveland": { receptions: 8, receivingYards: 137, twoPointConversions: 1 },
-        "Jordan Love": { passingYards: 323, passingTD: 4 },
+        "Jordan Love": { passingYards: 323, passingTD: 4, rushingYards: 11 },
         "Josh Jacobs": { rushingYards: 55, receptions: 1, receivingYards: 3 },
         "Christian Watson": { receptions: 3, receivingYards: 36, receivingTD: 1 },
         // Bills 27, Jaguars 24
