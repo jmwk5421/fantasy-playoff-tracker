@@ -403,7 +403,10 @@ function renderLineups() {
                     }).join('')}
                 </div>
                 <div class="lineup-actions">
-                    <button class="btn btn-primary btn-small" onclick="openLineupModal(${fantasyPlayer.id})">Set Lineup</button>
+                    ${isRoundLocked()
+                        ? '<button class="btn btn-small" disabled style="opacity: 0.5; cursor: not-allowed;">Locked</button>'
+                        : `<button class="btn btn-primary btn-small" onclick="openLineupModal(${fantasyPlayer.id})">Set Lineup</button>`
+                    }
                 </div>
             </div>
         `;
@@ -642,8 +645,17 @@ function savePlayerStats() {
     closeModal();
 }
 
+// Check if current round is locked
+function isRoundLocked(round = currentRound) {
+    return LOCKED_ROUNDS.includes(round);
+}
+
 // Open lineup modal
 function openLineupModal(fantasyPlayerId) {
+    if (isRoundLocked()) {
+        alert(`Lineups for ${PLAYOFF_ROUNDS[currentRound].name} are locked. This round has already been played.`);
+        return;
+    }
     currentEditingTeamId = fantasyPlayerId;
     const fantasyPlayer = FANTASY_PLAYERS.find(p => p.id === fantasyPlayerId);
     const roster = DRAFT_PICKS[fantasyPlayerId];

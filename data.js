@@ -61,6 +61,10 @@ const BYE_TEAMS_BY_ROUND = {
     superbowl: []
 };
 
+// Locked rounds - lineups cannot be changed for these rounds
+// Add rounds here once they're in the past
+const LOCKED_ROUNDS = ["wildcard", "divisional"];
+
 // Snake Draft Results (6 players x 8 rounds = 48 picks)
 // Draft order: 1,2,3,4,5,6,6,5,4,3,2,1,1,2,3,4,5,6...
 //
@@ -317,6 +321,31 @@ let playerStats = {
         "Luther Burden": { receptions: 3, receivingYards: 24 },
         "Rome Odunze": { receptions: 2, receivingYards: 44 },
         "Colston Loveland": { receptions: 4, receivingYards: 56 }
+    },
+    // Conference Championship Round Stats
+    championship: {
+        // AFC Championship: Patriots 10, Broncos 7
+        "Drake Maye": { passingYards: 86, rushingYards: 65, rushingTD: 1 },
+        "Rhamondre Stevenson": { rushingYards: 71 },
+        "TreVeyon Henderson": { rushingYards: 65, rushingTD: 1 },
+        "Stefon Diggs": { receptions: 5, receivingYards: 17 },
+        "Hunter Henry": { receptions: 2, receivingYards: 12 },
+        "Courtland Sutton": { receptions: 3, receivingYards: 17, receivingTD: 1 },
+        "RJ Harvey": { rushingYards: 37, receptions: 4, receivingYards: 22 },
+        // Bo Nix - Did not play (injured)
+        // Troy Franklin - Did not play (injured)
+        // NFC Championship: Seahawks 31, Rams 27
+        "Matthew Stafford": { passingYards: 374, passingTD: 3, rushingYards: 16, fumblesLost: 1 },
+        "Kyren Williams": { rushingYards: 39, receptions: 2, receivingYards: 22, receivingTD: 1 },
+        "Blake Corum": { rushingYards: 55, receptions: 3, receivingYards: 24 },
+        "Puka Nacua": { receptions: 9, receivingYards: 165, receivingTD: 1 },
+        "Davante Adams": { receptions: 4, receivingYards: 89, receivingTD: 1 },
+        "Sam Darnold": { passingYards: 346, passingTD: 3, rushingYards: 9 },
+        "Kenneth Walker": { rushingYards: 62, rushingTD: 1, receptions: 4, receivingYards: 49 },
+        "Jaxon Smith-Njigba": { receptions: 10, receivingYards: 153, receivingTD: 1 }
+        // Zach Charbonnet - Did not play (torn ACL, on IR)
+        // Tyler Higbee - Stats not available
+        // AJ Barner - Stats not available
     }
 };
 

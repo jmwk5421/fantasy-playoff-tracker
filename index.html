@@ -13,15 +13,6 @@
             <p class="subtitle">2025-26 NFL Playoffs</p>
         </header>
 
-        <section class="round-selector">
-            <div class="round-tabs" id="roundTabs">
-                <button class="round-tab active" data-round="wildcard">Wild Card</button>
-                <button class="round-tab" data-round="divisional">Divisional</button>
-                <button class="round-tab" data-round="championship">Conference</button>
-                <button class="round-tab" data-round="superbowl">Super Bowl</button>
-            </div>
-        </section>
-
         <section class="standings-section">
             <h2>Overall Standings</h2>
             <div id="overallStandings" class="standings-grid">
@@ -36,10 +27,12 @@
             </div>
         </section>
 
-        <section class="standings-section">
-            <h2><span id="currentRoundStandingsName">Wild Card</span> Standings</h2>
-            <div id="standings" class="standings-grid">
-                <!-- Populated by JavaScript -->
+        <section class="round-selector">
+            <div class="round-tabs" id="roundTabs">
+                <button class="round-tab active" data-round="wildcard">Wild Card</button>
+                <button class="round-tab" data-round="divisional">Divisional</button>
+                <button class="round-tab" data-round="championship">Conference</button>
+                <button class="round-tab" data-round="superbowl">Super Bowl</button>
             </div>
         </section>
 
@@ -47,6 +40,13 @@
             <h2>Starting Lineups - <span id="currentRoundName">Wild Card</span></h2>
             <p class="info-text" id="lineupInfo">Each team starts: QB, RB, WR, WR, FLEX, FLEX. Only started players earn points.</p>
             <div id="lineups" class="lineups-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </section>
+
+        <section class="standings-section">
+            <h2><span id="currentRoundStandingsName">Wild Card</span> Standings</h2>
+            <div id="standings" class="standings-grid">
                 <!-- Populated by JavaScript -->
             </div>
         </section>
