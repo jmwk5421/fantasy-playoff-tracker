@@ -47,10 +47,10 @@ const TEAMS_BY_ROUND = {
     wildcard: ["NE", "JAX", "PIT", "HOU", "BUF", "LAC", "CHI", "PHI", "CAR", "LAR", "SF", "GB"],
     // Divisional: 8 teams remaining (1 & 2 seeds + wild card winners)
     divisional: ["DEN", "NE", "HOU", "BUF", "SEA", "CHI", "LAR", "SF"],
-    // Championship: Update after divisional round
-    championship: ["DEN", "NE", "SEA", "LAR"],  // Broncos vs Patriots (AFC), Seahawks vs Rams (NFC)
-    // Super Bowl: Update after championship round
-    superbowl: ["DEN", "NE", "SEA", "LAR"]  // All teams not yet eliminated
+    // Championship: Broncos vs Patriots (AFC), Seahawks vs Rams (NFC)
+    championship: ["DEN", "NE", "SEA", "LAR"],
+    // Super Bowl: Patriots vs Seahawks (Broncos and Rams eliminated)
+    superbowl: ["NE", "SEA"]
 };
 
 // Teams on bye each round (1 seeds in wild card)
