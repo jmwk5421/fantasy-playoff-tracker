@@ -63,7 +63,7 @@ const BYE_TEAMS_BY_ROUND = {
 
 // Locked rounds - lineups cannot be changed for these rounds
 // Add rounds here once they're in the past
-const LOCKED_ROUNDS = ["wildcard", "divisional"];
+const LOCKED_ROUNDS = ["wildcard", "divisional", "championship"];
 
 // Snake Draft Results (6 players x 8 rounds = 48 picks)
 // Draft order: 1,2,3,4,5,6,6,5,4,3,2,1,1,2,3,4,5,6...
