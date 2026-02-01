@@ -389,7 +389,7 @@ const DEFAULT_LINEUPS = {
         // Hirschl
         4: { rb1: "RJ Harvey", wr1: "Davante Adams", flex1: "Matthew Stafford", flex2: "Tyler Higbee" },
         // Rob
-        5: { rb1: "Rhamondre Stevenson", wr1: "Stefon Diggs", flex1: "Drake Maye", flex2: "Blake Corum" },
+        5: { rb1: "Rhamondre Stevenson", wr1: "Stefon Diggs", flex1: "Drake Maye", flex2: "Sam Darnold" },
         // Sunny
         6: { rb1: "Zach Charbonnet", wr1: null, flex1: null, flex2: null }
     },
@@ -431,7 +431,7 @@ function loadSavedData() {
         2: { rb1: "Kyren Williams", wr1: "Courtland Sutton", flex1: "Hunter Henry", flex2: "TreVeyon Henderson" },
         3: { rb1: "Kenneth Walker", wr1: "Jaxon Smith-Njigba", flex1: null, flex2: null },
         4: { rb1: "RJ Harvey", wr1: "Davante Adams", flex1: "Matthew Stafford", flex2: "Tyler Higbee" },
-        5: { rb1: "Rhamondre Stevenson", wr1: "Stefon Diggs", flex1: "Drake Maye", flex2: "Blake Corum" },
+        5: { rb1: "Rhamondre Stevenson", wr1: "Stefon Diggs", flex1: "Drake Maye", flex2: "Sam Darnold" },
         6: { rb1: "Zach Charbonnet", wr1: null, flex1: null, flex2: null }
     };
     if (savedRound) {
