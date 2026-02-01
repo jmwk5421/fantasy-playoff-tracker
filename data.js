@@ -379,7 +379,20 @@ const DEFAULT_LINEUPS = {
         // Sunny
         6: { qb1: "Josh Allen", rb1: "James Cook", wr1: "George Kittle", wr2: "Rome Odunze", flex1: "Christian McCaffrey", flex2: "Brock Purdy" }
     },
-    championship: {},
+    championship: {
+        // Stoler
+        1: { rb1: null, wr1: "Puka Nacua", flex1: null, flex2: null },
+        // Kilborne
+        2: { rb1: "Kyren Williams", wr1: "Courtland Sutton", flex1: "Hunter Henry", flex2: "TreVeyon Henderson" },
+        // Greer
+        3: { rb1: "Kenneth Walker", wr1: "Jaxon Smith-Njigba", flex1: null, flex2: null },
+        // Hirschl
+        4: { rb1: "RJ Harvey", wr1: "Davante Adams", flex1: "Matthew Stafford", flex2: "Tyler Higbee" },
+        // Rob
+        5: { rb1: "Rhamondre Stevenson", wr1: "Stefon Diggs", flex1: "Drake Maye", flex2: "Blake Corum" },
+        // Sunny
+        6: { rb1: "Zach Charbonnet", wr1: null, flex1: null, flex2: null }
+    },
     superbowl: {}
 };
 
