@@ -63,7 +63,7 @@ const BYE_TEAMS_BY_ROUND = {
 
 // Locked rounds - lineups cannot be changed for these rounds
 // Add rounds here once they're in the past
-const LOCKED_ROUNDS = ["wildcard", "divisional", "championship"];
+const LOCKED_ROUNDS = ["wildcard", "divisional", "championship", "superbowl"];
 
 // Snake Draft Results (6 players x 8 rounds = 48 picks)
 // Draft order: 1,2,3,4,5,6,6,5,4,3,2,1,1,2,3,4,5,6...
@@ -346,6 +346,21 @@ let playerStats = {
         // Zach Charbonnet - Did not play (torn ACL, on IR)
         // Tyler Higbee - Stats not available
         // AJ Barner - Stats not available
+    },
+    // Super Bowl Stats: Seahawks 29, Patriots 13
+    superbowl: {
+        // Seahawks
+        "Sam Darnold": { passingYards: 202, passingTD: 1, interceptions: 0 },
+        "Kenneth Walker": { rushingYards: 135, receptions: 2, receivingYards: 26 },
+        "Jaxon Smith-Njigba": { receptions: 4, receivingYards: 27 },
+        "AJ Barner": { receptions: 4, receivingYards: 54, receivingTD: 1 },
+        // Zach Charbonnet - Did not play (torn ACL, on IR since divisional round)
+        // Patriots
+        "Drake Maye": { passingYards: 295, passingTD: 2, interceptions: 2, rushingYards: 37 },
+        "Rhamondre Stevenson": { rushingYards: 23, receptions: 5, receivingYards: 40, receivingTD: 1 },
+        "TreVeyon Henderson": { rushingYards: 19, receptions: 3, receivingYards: 26 },
+        "Hunter Henry": { receptions: 3, receivingYards: 31 },
+        "Stefon Diggs": { receptions: 3, receivingYards: 37 }
     }
 };
 
@@ -393,7 +408,20 @@ const DEFAULT_LINEUPS = {
         // Sunny
         6: { rb1: "Zach Charbonnet", wr1: null, flex1: null, flex2: null }
     },
-    superbowl: {}
+    superbowl: {
+        // Stoler - no players on NE or SEA
+        1: { flex1: null, flex2: null, flex3: null },
+        // Kilborne
+        2: { flex1: "TreVeyon Henderson", flex2: "Hunter Henry", flex3: null },
+        // Greer
+        3: { flex1: "Jaxon Smith-Njigba", flex2: "Kenneth Walker", flex3: null },
+        // Hirschl - no players on NE or SEA
+        4: { flex1: null, flex2: null, flex3: null },
+        // Rob
+        5: { flex1: "Drake Maye", flex2: "Sam Darnold", flex3: "Rhamondre Stevenson" },
+        // Sunny
+        6: { flex1: "Zach Charbonnet", flex2: null, flex3: null }
+    }
 };
 
 // Initialize startingLineups with defaults
@@ -433,6 +461,15 @@ function loadSavedData() {
         4: { rb1: "RJ Harvey", wr1: "Davante Adams", flex1: "Matthew Stafford", flex2: "Tyler Higbee" },
         5: { rb1: "Rhamondre Stevenson", wr1: "Stefon Diggs", flex1: "Drake Maye", flex2: "Sam Darnold" },
         6: { rb1: "Zach Charbonnet", wr1: null, flex1: null, flex2: null }
+    };
+    // Force Super Bowl lineups (already played)
+    startingLineups.superbowl = {
+        1: { flex1: null, flex2: null, flex3: null },
+        2: { flex1: "TreVeyon Henderson", flex2: "Hunter Henry", flex3: null },
+        3: { flex1: "Jaxon Smith-Njigba", flex2: "Kenneth Walker", flex3: null },
+        4: { flex1: null, flex2: null, flex3: null },
+        5: { flex1: "Drake Maye", flex2: "Sam Darnold", flex3: "Rhamondre Stevenson" },
+        6: { flex1: "Zach Charbonnet", flex2: null, flex3: null }
     };
     if (savedRound) {
         currentRound = savedRound;
